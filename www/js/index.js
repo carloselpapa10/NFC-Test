@@ -37,9 +37,10 @@ var app = {
         try {
             nfc.addTagDiscoveredListener(
                 function (nfcEvent){
+                    alert("Event : "+nfcEvent);
                     var tag = nfcEvent.tag,ndefMessage = tag.ndefMessage;
-                    alert(JSON.stringify(ndefMessage));
-                    alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));
+                    //alert(JSON.stringify(ndefMessage));
+                    //alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));
                 },
                 function (){
                     alert("success callback");
