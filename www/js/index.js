@@ -35,6 +35,17 @@ var app = {
     onDeviceReady: function () {
 
         try {
+            nfc.addTagDiscoveredListener(
+                function (nfcEvent){
+                    alert("algo");
+                },
+                function (){
+                    alert("success callback");
+                },
+                function(){
+                    alert("error");
+                }
+            );
             // Read NDEF formatted NFC Tags
             nfc.addNdefListener(
                 function (nfcEvent) {
@@ -61,8 +72,7 @@ var app = {
         } catch (ex) {
             alert(ex.message);
         }
-
-
+        
         app.receivedEvent('deviceready');
 
     },
