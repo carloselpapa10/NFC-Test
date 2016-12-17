@@ -11,7 +11,6 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-		
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
@@ -41,6 +40,7 @@ var app = {
         app.receivedEvent('deviceready');
     },	
 	onaddTagD: function(nfcEvent){
+		document.getElementById("userData").textContent="";
 		var tag = nfcEvent.tag;
 		
 		if (tag.id) {
@@ -68,10 +68,11 @@ var app = {
 		
 			if(ID == user[0].ID){
 				alert("User: "+user[0].NAME);
+				document.getElementById("userData").textContent=user[0].NAME;
 			}
 			
 			if(ID == user[1].ID){
-				alert("User: "+user[1].NAME);
+				document.getElementById("userData").textContent=user[1].NAME;
 			}
 			
 		/*window.cordovaHTTP.get(
