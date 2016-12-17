@@ -16,15 +16,15 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 	
-		/*function failure(reason){
+		function failure(reason){
 			navigator.notification.alert(reason, function() {}, "There was a problem");
-		}*/
+		}
 
         try {
 	   nfc.addTagDiscoveredListener(
                 function(event){alert("holaaa");},
                 function (){},
-                function(error){}
+                failure
             );
             /*nfc.addNdefListener(
                 app.onaddNdef,
