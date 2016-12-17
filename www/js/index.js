@@ -56,8 +56,9 @@ var app = {
                 },
                 function (error) { // error callback
                     alert("Error adding NDEF listener " + JSON.stringify(error));
-                };
-                nfc.removeTagDiscoveredListener(
+                }
+           );     
+           nfc.removeTagDiscoveredListener(
                 function (nfcEvent){
                     //alert("removeTagDiscoveredListener");
                 },
@@ -89,7 +90,6 @@ var app = {
                 function(error){
                     //alert("error addMimeTypeListener");
                 }
-            )
             );
         } catch (ex) {
             alert(ex.message);
