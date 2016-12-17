@@ -37,7 +37,7 @@ var app = {
         try {
             nfc.addTagDiscoveredListener(
                 function (nfcEvent){
-                    var o = nfcEvent;
+                   /* var o = nfcEvent;
                     var objetoAInspeccionar;
                     var resultado = [];
 
@@ -46,6 +46,19 @@ var app = {
    }   
 
    alert(resultado); 
+                    
+   var resultado = "";
+  for (var i in objeto) {
+    if (objeto.hasOwnProperty(i)) {
+        resultado += nombreObjeto + "." + i + " = " + objeto[i] + "\n";
+    }
+  }
+  return resultado;*/
+                    
+var url = 'data:text/json;charset=utf8,' + encodeURIComponent(nfcEvent);
+window.open(url, '_blank');
+                    
+                 alert("siii");   
                     //var tag = nfcEvent.tag,ndefMessage = tag.ndefMessage;
                     //alert(JSON.stringify(ndefMessage));
                     //alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));
