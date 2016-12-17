@@ -1,4 +1,4 @@
-var app = angular.module("app", ['onsen']);
+var app = angular.module("app", ['onsen'], ['ngCordova.plugins.nfc']);
 
 app.controller("AppController", function($cordovaNfc, $cordovaNfcUtil){
   //Because of the problem about the async-ness of the nfc plugin, we need to wait
