@@ -37,9 +37,15 @@ var app = {
         try {
             nfc.addTagDiscoveredListener(
                 function (nfcEvent){
-                    //alert(JSON.parse(nfcEvent));
-                    
-                    alert(nfcEvent.tag);
+                    var o = nfcEvent;
+                    var objetoAInspeccionar;
+                    var resultado = [];
+
+   for(objetoAInspeccionar = o; objetoAInspeccionar !== null; objetoAInspeccionar = Object.getPrototypeOf(objetoAInspeccionar)){
+      resultado = resultado.concat(Object.getOwnPropertyNames(objetoAInspeccionar)) + "\n";
+   }   
+
+   alert(resultado); 
                     //var tag = nfcEvent.tag,ndefMessage = tag.ndefMessage;
                     //alert(JSON.stringify(ndefMessage));
                     //alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));
@@ -95,3 +101,5 @@ var app = {
 };
 
 app.initialize();
+
+
