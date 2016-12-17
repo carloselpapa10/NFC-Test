@@ -39,42 +39,41 @@ var app = {
         }
         
         app.receivedEvent('deviceready');
-		app.onSearchUser();
     },	
 	onaddTagD: function(nfcEvent){
 		var tag = nfcEvent.tag;
-		app.onSearchUser(tag.id);
-		/*if (tag.id) {
-			if(tag.id == user[0].ID){
-				alert("User: "+user[0].NAME);
-			}
-			
-			if(tag.id == user[1].ID){
-				alert("User: "+user[1].NAME);
-			}
-		}*/
 		
+		if (tag.id) {
+			app.onSearchUser(tag.id);
+		}
 		navigator.notification.vibrate(100); 
 	},	
 	onaddNdef: function(nfcEvent){	
 		alert("onaddNdef");
 	},
 	onSearchUser: function(ID){
-		alert(ID);
-	
-		/*user = [{ID: '4,-13,109,-6,-39,63,-128',
-			NAME: 'Carlos',
-			LASTNAME: 'Avendano',
-			PHOTO: 'path',
-			PHONE: '3003940576',
-			EMAIL: 'c.avendano10@gmail.com'},
-			{ID: '4,-98,-73,-118,-38,63,-128',
-			NAME: 'Kelwin',
-			LASTNAME: 'Payares',
-			PHOTO: 'path',
-			PHONE: '3288046004',
-			EMAIL: 'stevin_2209@hotmail.com'}];*/
+
+			user = [{ID: '4,-13,109,-6,-39,63,-128',
+				NAME: 'Carlos',
+				LASTNAME: 'Avendano',
+				PHOTO: 'path',
+				PHONE: '3003940576',
+				EMAIL: 'c.avendano10@gmail.com'},
+				{ID: '4,-98,-73,-118,-38,63,-128',
+				NAME: 'Kelwin',
+				LASTNAME: 'Payares',
+				PHOTO: 'path',
+				PHONE: '3288046004',
+				EMAIL: 'stevin_2209@hotmail.com'}];
 		
+			if(ID == user[0].ID){
+				alert("User: "+user[0].NAME);
+			}
+			
+			if(ID == user[1].ID){
+				alert("User: "+user[1].NAME);
+			}
+			
 		/*window.cordovaHTTP.get(
 		  "https://platform.telerik.com",
 		  function(msg) {alert("OK: " + msg)},
