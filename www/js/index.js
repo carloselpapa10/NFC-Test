@@ -1,4 +1,15 @@
-var users = "si";
+var user = [{ID: '4,-13,109,-6,-39,63,-128',
+    NAME: 'Carlos',
+    LASTNAME: 'Avendano',
+    PHOTO: 'path',
+    PHONE: '3003940576',
+    EMAIL: 'c.avendano10@gmail.com'},
+	{ID: '4,-98,-73,-118,-38,63,-128',
+    NAME: 'Kelwin',
+    LASTNAME: 'Payares',
+    PHOTO: 'path',
+    PHONE: '3288046004',
+    EMAIL: 'stevin_2209@hotmail.com'}];
 
 var app = {
 
@@ -54,13 +65,12 @@ var app = {
 		alert("onaddNdef");
 	},
 	onSearchUser: function(){
-		alert("entro");
-		alert(users);
-		window.cordovaHTTP.get(
+		alert(user[0].NAME+" - "+user[1].NAME);
+		/*window.cordovaHTTP.get(
 		  "https://platform.telerik.com",
 		  function(msg) {alert("OK: " + msg)},
 		  function(msg) {alert("ERROR: " + msg)}
-		);
+		);*/
 		
 	},
     // Update DOM on a Received Event
