@@ -19,6 +19,21 @@ app.controller("AppController", function($cordovaNfc, $cordovaNfcUtil){
 			}
   );
   
+  $cordovaNfc.addTagDiscoveredListener(
+			function() {
+				alert("a");
+				document.write("Found an NDEF formatted tag");
+			},
+			function() {
+				alert("b");
+				console.log("Success.");
+			},
+			function() {
+				alert("c");
+				console.log("Fail.");
+			}
+  );
+  
    $cordovaNfc.then(function(nfcInstance){
 
         //Use the plugins interface as you go, in a more "angular" way
