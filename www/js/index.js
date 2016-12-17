@@ -16,17 +16,17 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 	
-		function failure(reason){
+		/*function failure(reason){
 			navigator.notification.alert(reason, function() {}, "There was a problem");
-		}
+		}*/
 
         try {
 	   nfc.addTagDiscoveredListener(
                 function(event){alert("holaaa");},
                 function (){},
-                failure
+                function(error){}
             );
-            nfc.addNdefListener(
+            /*nfc.addNdefListener(
                 app.onaddNdef,
                 function () {},
 		failure
@@ -40,7 +40,7 @@ var app = {
                 app.onaddMime,
                 function(){},
 		failure
-            );
+            );*/
         } catch (ex) {
             alert(ex.message);
         }
@@ -49,7 +49,7 @@ var app = {
 
     },
 	
-	onaddTagD: function(nfcEvent){
+	/*onaddTagD: function(nfcEvent){
 		alert("Holaaa");
 	},	
 	onaddNdef: function(nfcEvent){	
@@ -57,7 +57,7 @@ var app = {
 	onremoveTag: function(nfcEvent){
 	},
 	onaddMime: function(nfcEvent){
-	},
+	},*/
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
