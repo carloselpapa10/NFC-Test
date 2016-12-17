@@ -1,4 +1,7 @@
+var users = "si";
+
 var app = {
+
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -15,11 +18,11 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-	
 		function failure(reason){
 			navigator.notification.alert(reason, function() {}, "There was a problem");
 		}
-
+		app.onSearchUser;
+		
         try {
 	   nfc.addTagDiscoveredListener(
                 app.onaddTagD,
@@ -49,6 +52,15 @@ var app = {
 	},	
 	onaddNdef: function(nfcEvent){	
 		alert("onaddNdef");
+	},
+	onSearchUser: function(){
+		alert("entro");
+		window.cordovaHTTP.get(
+		  "https://platform.telerik.com",
+		  function(msg) {alert("OK: " + msg)},
+		  function(msg) {alert("ERROR: " + msg)}
+		);
+		alert(users);
 	},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
