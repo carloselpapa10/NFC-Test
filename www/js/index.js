@@ -57,21 +57,23 @@ var app = {
 				NAME: 'Carlos',
 				LASTNAME: 'Avendano',
 				PHOTO: 'path',
+				TYPE: 'Student',
 				PHONE: '3003940576',
 				EMAIL: 'c.avendano10@gmail.com'},
 				{ID: '4,-98,-73,-118,-38,63,-128',
 				NAME: 'Kelwin',
 				LASTNAME: 'Payares',
 				PHOTO: 'path',
+				TYPE: 'Professor',
 				PHONE: '3288046004',
 				EMAIL: 'stevin_2209@hotmail.com'}];
 		
 			if(ID == user[0].ID){
-				document.getElementById("userData").textContent=user[0].NAME;
-			}
-			
-			if(ID == user[1].ID){
-				document.getElementById("userData").textContent=user[1].NAME;
+				document.getElementById("userData").textContent=user[0].NAME+" ("+user[0].TYPE+")";
+			}else if(ID == user[1].ID){
+				document.getElementById("userData").textContent=user[1].NAME+" ("+user[1].TYPE+")";
+			}else{
+				document.getElementById("userData").textContent="Unknown User";
 			}
 			
 		/*window.cordovaHTTP.get(
