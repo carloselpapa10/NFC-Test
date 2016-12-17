@@ -45,20 +45,16 @@ var app = {
       resultado = resultado.concat(Object.getOwnPropertyNames(objetoAInspeccionar)) + "\n";
    }   
 
-   alert(resultado); 
-                    
+   alert(resultado); */
+   var objeto = nfcEvent;                 
    var resultado = "";
   for (var i in objeto) {
     if (objeto.hasOwnProperty(i)) {
-        resultado += nombreObjeto + "." + i + " = " + objeto[i] + "\n";
+        alert("nfcEvent" + "." + i + " = " + objeto[i]);
     }
   }
-  return resultado;*/
                     
-var url = 'data:text/json;charset=utf8,' + encodeURIComponent(nfcEvent);
-window.open(url, '_blank');
-                    
-                 alert("siii");   
+  
                     //var tag = nfcEvent.tag,ndefMessage = tag.ndefMessage;
                     //alert(JSON.stringify(ndefMessage));
                     //alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));
