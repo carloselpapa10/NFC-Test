@@ -20,6 +20,14 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-test-framework/www/main.js",
         "id": "cordova-plugin-test-framework.main"
+    },
+    {
+        "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+        "id": "cordova-plugin-vibration.notification",
+        "merges": [
+            "navigator.notification",
+            "navigator"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -27,7 +35,8 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.3.1",
     "phonegap-nfc": "0.6.6",
-    "cordova-plugin-test-framework": "1.1.5-dev"
+    "cordova-plugin-test-framework": "1.1.5-dev",
+    "cordova-plugin-vibration": "2.1.3"
 }
 // BOTTOM OF METADATA
 });
