@@ -21,7 +21,7 @@ var app = {
 		function failure(reason){
 			navigator.notification.alert(reason, function() {}, "There was a problem");
 		}
-		app.onSearchUser;
+		app.onSearchUser();
 		
         try {
 	   nfc.addTagDiscoveredListener(
