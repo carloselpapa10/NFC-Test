@@ -33,63 +33,29 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
+	
+		function failure(reason){navigator.notification.alert(reason, function() {}, "There was a problem");}
 
         try {
-            // Read NDEF formatted NFC Tags
+			nfc.addTagDiscoveredListener(
+                app.onaddTagD,
+                function (){},
+                failure
+            );
             nfc.addNdefListener(
-                function (nfcEvent) {
-                    alert("abc");
-                    /*var tag = nfcEvent.tag,
-                        ndefMessage = tag.ndefMessage;
-
-                    // dump the raw json of the message
-                    // note: real code will need to decode
-                    // the payload from each record
-                    alert(JSON.stringify(ndefMessage));
-
-                    // assuming the first record in the message has 
-                    // a payload that can be converted to a string.
-                    alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));*/
-                },
-                function () { // success callback
-                    //alert("Waiting for NDEF tag");
-                },
-                function (error) { // error callback
-                    alert("Error adding NDEF listener " + JSON.stringify(error));
-                }
+                app.onaddNdef,
+                function () {},
+				failure
            );     
            nfc.removeTagDiscoveredListener(
-                function (nfcEvent){
-                    //alert("removeTagDiscoveredListener");
-                },
-                function (){
-                    //alert("removeTagDiscoveredListener");
-                },
-                function (error){
-                    alert("error "+error);
-                }
-            );
-            nfc.addTagDiscoveredListener(
-                function (nfcEvent){
-                    alert("addTagDiscoveredListener "+nfcEvent.tag.ndefMessage);
-                },
-                function (){
-                    //alert("success callback");
-                },
-                function(error){
-                    alert("error");
-                }
-            );
+                app.onremoveTag,
+                function (){},
+                failure
+            );            
             nfc.addMimeTypeListener(
-                function(nfcEvent){
-                    alert("addMimeTypeListener : "+nfcEvent);
-                },
-                function(){
-                    //alert("addMimeTypeListener callback");
-                },
-                function(error){
-                    //alert("error addMimeTypeListener");
-                }
+                app.onaddMime,
+                function(){},
+				failure
             );
         } catch (ex) {
             alert(ex.message);
@@ -98,6 +64,16 @@ var app = {
         app.receivedEvent('deviceready');
 
     },
+	
+	onaddTagD: function(nfcEvent){
+		alert("Holaaa");
+	},	
+	onaddNdef: function(nfcEvent){	
+	},	
+	onremoveTag: function(nfcEvent){
+	},
+	onaddMime: function(nfcEvent){
+	},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
@@ -112,5 +88,3 @@ var app = {
 };
 
 app.initialize();
-
-
