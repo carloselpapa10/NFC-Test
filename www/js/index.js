@@ -46,7 +46,7 @@ var app = {
    }   
 
    alert(resultado); */
-   var objeto = nfcEvent.tag;
+   var objeto = nfcEvent.tag.techTypes;
    var resultado = "";
   for (var i in objeto) {
     if (objeto.hasOwnProperty(i)) {
