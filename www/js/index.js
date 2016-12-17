@@ -37,7 +37,6 @@ var app = {
         try {
             nfc.addTagDiscoveredListener(
                 function (nfcEvent){
-                    alert("nfcEvent : "+nfcEvent.tag.serialNumber);
                    /* var o = nfcEvent;
                     var objetoAInspeccionar;
                     var resultado = [];
@@ -67,6 +66,18 @@ var app = {
                     alert("error");
                 }
             );
+            nfc.addMimeTypeListener(
+                function(nfcEvent){
+                    alert("addMimeTypeListener : "+nfcEvent);
+                },
+                function(){
+                    alert("success callback");
+                },
+                function(error){
+                    alert(error);
+                }
+            );
+            
             // Read NDEF formatted NFC Tags
             nfc.addNdefListener(
                 function (nfcEvent) {
