@@ -38,6 +38,7 @@ var app = {
             // Read NDEF formatted NFC Tags
             nfc.addNdefListener(
                 function (nfcEvent) {
+                    alert("abc");
                     var tag = nfcEvent.tag,
                         ndefMessage = tag.ndefMessage;
 
