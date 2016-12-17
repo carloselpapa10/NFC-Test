@@ -43,7 +43,8 @@ var app = {
     },	
 	onaddTagD: function(nfcEvent){
 		var tag = nfcEvent.tag;
-		if (tag.id) {
+		app.onSearchUser(tag.id);
+		/*if (tag.id) {
 			if(tag.id == user[0].ID){
 				alert("User: "+user[0].NAME);
 			}
@@ -51,16 +52,17 @@ var app = {
 			if(tag.id == user[1].ID){
 				alert("User: "+user[1].NAME);
 			}
-		}
+		}*/
 		
 		navigator.notification.vibrate(100); 
 	},	
 	onaddNdef: function(nfcEvent){	
 		alert("onaddNdef");
 	},
-	onSearchUser: function(){
+	onSearchUser: function(ID){
+		alert(ID);
 	
-		user = [{ID: '4,-13,109,-6,-39,63,-128',
+		/*user = [{ID: '4,-13,109,-6,-39,63,-128',
 			NAME: 'Carlos',
 			LASTNAME: 'Avendano',
 			PHOTO: 'path',
@@ -71,7 +73,7 @@ var app = {
 			LASTNAME: 'Payares',
 			PHOTO: 'path',
 			PHONE: '3288046004',
-			EMAIL: 'stevin_2209@hotmail.com'}];
+			EMAIL: 'stevin_2209@hotmail.com'}];*/
 		
 		/*window.cordovaHTTP.get(
 		  "https://platform.telerik.com",
