@@ -21,7 +21,6 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-	    <param name="android-package" value="org.apache.cordova.vibration.Vibration"/>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
