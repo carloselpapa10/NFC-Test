@@ -39,7 +39,7 @@ var app = {
 
     },	
 	onaddTagD: function(nfcEvent){
-		alert("Holaaa");
+		alert("Holaaa"+nfcEvent.tag.id);
 	},	
 	onaddNdef: function(nfcEvent){	
 		alert("onaddNdef");
