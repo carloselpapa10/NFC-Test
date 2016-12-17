@@ -11,6 +11,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
+		
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
@@ -21,8 +22,7 @@ var app = {
 		function failure(reason){
 			navigator.notification.alert(reason, function() {}, "There was a problem");
 		}
-		app.onSearchUser();
-		
+				
         try {
 	   nfc.addTagDiscoveredListener(
                 app.onaddTagD,
@@ -39,7 +39,7 @@ var app = {
         }
         
         app.receivedEvent('deviceready');
-
+		app.onSearchUser();
     },	
 	onaddTagD: function(nfcEvent){
 		var tag = nfcEvent.tag;
@@ -55,12 +55,13 @@ var app = {
 	},
 	onSearchUser: function(){
 		alert("entro");
+		alert(users);
 		window.cordovaHTTP.get(
 		  "https://platform.telerik.com",
 		  function(msg) {alert("OK: " + msg)},
 		  function(msg) {alert("ERROR: " + msg)}
 		);
-		alert(users);
+		
 	},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
