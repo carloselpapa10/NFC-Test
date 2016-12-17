@@ -35,6 +35,17 @@ var app = {
     onDeviceReady: function () {
 
         try {
+            nfc.removeTagDiscoveredListener(
+                function (nfcEvent){
+                    alert("removeTagDiscoveredListener");
+                },
+                function (){
+                    alert("removeTagDiscoveredListener");
+                },
+                function (error){
+                    alert("error "+error);
+                }
+            );
             nfc.addTagDiscoveredListener(
                 function (nfcEvent){
                     alert("addTagDiscoveredListener");
