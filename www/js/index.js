@@ -33,11 +33,47 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+	
+		nfc.addNdefListener(
+            app.onNdef,
+            function() {
+				alert("Listening for NDEF tags");
+                console.log("Listening for NDEF tags.");
+            },
+            failure
+        );
+		
+		if (device.platform == "Android") {
+
+            // Android reads non-NDEF tag. BlackBerry and Windows don't.
+            nfc.addTagDiscoveredListener(
+                app.onNfc,
+                function() {
+				alert("Listening");
+                    console.log("Listening for non-NDEF tags.");
+                },
+                failure
+            );
+
+            // Android launches the app when tags with mime type text/pg are scanned
+            // because of an intent in AndroidManifest.xml.
+            // phonegap-nfc fires an ndef-mime event (as opposed to an ndef event)
+            // the code reuses the same onNfc handler
+            nfc.addMimeTypeListener(
+                'text/pg',
+                app.onNdef,
+                function() {
+				alert("Listening for NDEF mime");
+                    console.log("Listening for NDEF mime tags with type text/pg.");
+                },
+                failure
+            );
+        }
+	
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-		alert("aaa");
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
