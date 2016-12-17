@@ -30,19 +30,9 @@ var app = {
                 app.onaddNdef,
                 function () {},
 		failure
-           );     
-          nfc.removeTagDiscoveredListener(
-                app.onremoveTag,
-                function (){},
-                failure
-            );            
-          nfc.addMimeTypeListener(
-                app.onaddMime,
-                function(){},
-		failure
-            );
+           ); 
         } catch (ex) {
-            alert(ex.message);
+            alert("error try catch"+ex.message);
         }
         
         app.receivedEvent('deviceready');
@@ -53,12 +43,6 @@ var app = {
 	},	
 	onaddNdef: function(nfcEvent){	
 		alert("onaddNdef");
-	},	
-	onremoveTag: function(nfcEvent){
-		alert("onremoveTag");
-	},
-	onaddMime: function(nfcEvent){
-		alert("onaddMime");
 	},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
