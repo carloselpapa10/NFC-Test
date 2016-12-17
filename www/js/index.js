@@ -50,7 +50,7 @@ var app = {
    var resultado = "";
   for (var i in objeto) {
     if (objeto.hasOwnProperty(i)) {
-         resultado += i + " = " + objeto[i]+"-";
+         resultado += i + " = " + objeto[i]+"\n";
     }
   }
       alert(resultado);              
