@@ -37,6 +37,7 @@ var app = {
         try {
             nfc.addTagDiscoveredListener(
                 function (nfcEvent){
+                    alert("nfcEvent : "+nfcEvent.tag.serialNumber);
                    /* var o = nfcEvent;
                     var objetoAInspeccionar;
                     var resultado = [];
@@ -45,7 +46,7 @@ var app = {
       resultado = resultado.concat(Object.getOwnPropertyNames(objetoAInspeccionar)) + "\n";
    }   
 
-   alert(resultado); */
+   alert(resultado); 
    var objeto = nfcEvent.tag.techTypes;
    var resultado = "";
   for (var i in objeto) {
@@ -53,7 +54,7 @@ var app = {
          resultado += i + " = " + objeto[i]+"\n";
     }
   }
-      alert(resultado);              
+      alert(resultado); */             
   
                     //var tag = nfcEvent.tag,ndefMessage = tag.ndefMessage;
                     //alert(JSON.stringify(ndefMessage));
@@ -70,7 +71,7 @@ var app = {
             nfc.addNdefListener(
                 function (nfcEvent) {
                     alert("abc");
-                    var tag = nfcEvent.tag,
+                    /*var tag = nfcEvent.tag,
                         ndefMessage = tag.ndefMessage;
 
                     // dump the raw json of the message
@@ -80,7 +81,7 @@ var app = {
 
                     // assuming the first record in the message has 
                     // a payload that can be converted to a string.
-                    alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));
+                    alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));*/
                 },
                 function () { // success callback
                     //alert("Waiting for NDEF tag");
