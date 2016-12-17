@@ -11,6 +11,7 @@
     <param name="onload" value="true" />
     <gap:plugin name="phonegap-nfc" source="npm" />
     <gap:plugin name="cordova-plugin-vibration" source="npm"/>
+	<preference name="AndroidPersistentFileLocation" value="Compatibility" />"
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
