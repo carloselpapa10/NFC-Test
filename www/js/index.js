@@ -1,5 +1,5 @@
-var user = null;
 
+var user = null;
 var app = {
 
     // Application Constructor
@@ -11,6 +11,12 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
+		window.cordovaHTTP.get(
+		  "https://platform.telerik.com",
+		  function(msg) {alert("OK: " + msg)},
+		  function(msg) {alert("ERROR: " + msg)}
+		);
+		
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
@@ -74,14 +80,7 @@ var app = {
 				document.getElementById("userData").textContent=user[1].NAME+" ("+user[1].TYPE+")";
 			}else{
 				document.getElementById("userData").textContent="Unknown User";
-			}
-			
-		/*window.cordovaHTTP.get(
-		  "https://platform.telerik.com",
-		  function(msg) {alert("OK: " + msg)},
-		  function(msg) {alert("ERROR: " + msg)}
-		);*/
-		
+			}	
 	},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
