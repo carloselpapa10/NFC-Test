@@ -8,6 +8,7 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
+    <param name="onload" value="true" />
     <gap:plugin name="phonegap-nfc" source="npm" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
