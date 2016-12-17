@@ -11,9 +11,8 @@
     <param name="onload" value="true" />
     <gap:plugin name="phonegap-nfc" source="npm" />
     <access origin="*" />
-	<feature name="Vibration">
-		<param name="android-package" value="org.apache.cordova.vibration.Vibration"/>
-    </feature>
+    <param name="android-package" value="org.apache.cordova.vibration.Vibration"/>
+    
 	<uses-permission android:name="android.permission.VIBRATE"/>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
