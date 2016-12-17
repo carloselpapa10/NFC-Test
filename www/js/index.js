@@ -22,7 +22,7 @@ var app = {
 
         try {
 	   nfc.addTagDiscoveredListener(
-                function(event){alert("holaaa");},
+                app.onaddTagD,
                 function (){},
                 failure
             );
@@ -49,10 +49,10 @@ var app = {
 
     },
 	
-	/*onaddTagD: function(nfcEvent){
+	onaddTagD: function(nfcEvent){
 		alert("Holaaa");
 	},	
-	onaddNdef: function(nfcEvent){	
+	/*onaddNdef: function(nfcEvent){	
 	},	
 	onremoveTag: function(nfcEvent){
 	},
