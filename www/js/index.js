@@ -26,38 +26,40 @@ var app = {
                 function (){},
                 failure
             );
-            /*nfc.addNdefListener(
+            nfc.addNdefListener(
                 app.onaddNdef,
                 function () {},
 		failure
            );     
-           nfc.removeTagDiscoveredListener(
+          nfc.removeTagDiscoveredListener(
                 app.onremoveTag,
                 function (){},
                 failure
             );            
-            nfc.addMimeTypeListener(
+          nfc.addMimeTypeListener(
                 app.onaddMime,
                 function(){},
 		failure
-            );*/
+            );
         } catch (ex) {
             alert(ex.message);
         }
         
         app.receivedEvent('deviceready');
 
-    },
-	
+    },	
 	onaddTagD: function(nfcEvent){
 		alert("Holaaa");
 	},	
-	/*onaddNdef: function(nfcEvent){	
+	onaddNdef: function(nfcEvent){	
+		alert("onaddNdef");
 	},	
 	onremoveTag: function(nfcEvent){
+		alert("onremoveTag");
 	},
 	onaddMime: function(nfcEvent){
-	},*/
+		alert("onaddMime");
+	},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
