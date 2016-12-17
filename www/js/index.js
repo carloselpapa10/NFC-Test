@@ -35,39 +35,6 @@ var app = {
     onDeviceReady: function () {
 
         try {
-            nfc.removeTagDiscoveredListener(
-                function (nfcEvent){
-                    alert("removeTagDiscoveredListener");
-                },
-                function (){
-                    alert("removeTagDiscoveredListener");
-                },
-                function (error){
-                    alert("error "+error);
-                }
-            );
-            nfc.addTagDiscoveredListener(
-                function (nfcEvent){
-                    alert("addTagDiscoveredListener "+nfcEvent.tag.ndefMessage);
-                },
-                function (){
-                    alert("success callback");
-                },
-                function(){
-                    alert("error");
-                }
-            );
-            nfc.addMimeTypeListener(
-                function(nfcEvent){
-                    alert("addMimeTypeListener : "+nfcEvent);
-                },
-                function(){
-                    alert("addMimeTypeListener callback");
-                },
-                function(error){
-                    alert("error addMimeTypeListener");
-                }
-            );            
             // Read NDEF formatted NFC Tags
             nfc.addNdefListener(
                 function (nfcEvent) {
@@ -85,11 +52,44 @@ var app = {
                     alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));*/
                 },
                 function () { // success callback
-                    alert("Waiting for NDEF tag");
+                    //alert("Waiting for NDEF tag");
                 },
                 function (error) { // error callback
                     alert("Error adding NDEF listener " + JSON.stringify(error));
+                };
+                nfc.removeTagDiscoveredListener(
+                function (nfcEvent){
+                    //alert("removeTagDiscoveredListener");
+                },
+                function (){
+                    //alert("removeTagDiscoveredListener");
+                },
+                function (error){
+                    alert("error "+error);
                 }
+            );
+            nfc.addTagDiscoveredListener(
+                function (nfcEvent){
+                    alert("addTagDiscoveredListener "+nfcEvent.tag.ndefMessage);
+                },
+                function (){
+                    //alert("success callback");
+                },
+                function(error){
+                    alert("error");
+                }
+            );
+            nfc.addMimeTypeListener(
+                function(nfcEvent){
+                    alert("addMimeTypeListener : "+nfcEvent);
+                },
+                function(){
+                    //alert("addMimeTypeListener callback");
+                },
+                function(error){
+                    //alert("error addMimeTypeListener");
+                }
+            )
             );
         } catch (ex) {
             alert(ex.message);
