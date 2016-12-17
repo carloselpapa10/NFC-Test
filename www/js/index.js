@@ -46,11 +46,10 @@ var app = {
    }   
 
    alert(resultado); */
-   var objeto = nfcEvent;                 
-   var resultado = "";
+   var objeto = nfcEvent.tag;      
   for (var i in objeto) {
     if (objeto.hasOwnProperty(i)) {
-        alert("nfcEvent" + "." + i + " = " + objeto[i]);
+        alert("nfcEvent.tag" + "." + i + " = " + objeto[i]);
     }
   }
                     
