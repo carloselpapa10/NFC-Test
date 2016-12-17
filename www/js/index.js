@@ -32,45 +32,38 @@ var app = {
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-	
-		nfc.addNdefListener(
-            app.onNdef,
-            function() {
-				alert("Listening for NDEF tags");
-                console.log("Listening for NDEF tags.");
-            },
-            failure
-        );
-		
-		if (device.platform == "Android") {
+    onDeviceReady: function () {
 
-            // Android reads non-NDEF tag. BlackBerry and Windows don't.
-            nfc.addTagDiscoveredListener(
-                app.onNfc,
-                function() {
-				alert("Listening");
-                    console.log("Listening for non-NDEF tags.");
-                },
-                failure
-            );
+        try {
+            // Read NDEF formatted NFC Tags
+            nfc.addNdefListener(
+                function (nfcEvent) {
+                    var tag = nfcEvent.tag,
+                        ndefMessage = tag.ndefMessage;
 
-            // Android launches the app when tags with mime type text/pg are scanned
-            // because of an intent in AndroidManifest.xml.
-            // phonegap-nfc fires an ndef-mime event (as opposed to an ndef event)
-            // the code reuses the same onNfc handler
-            nfc.addMimeTypeListener(
-                'text/pg',
-                app.onNdef,
-                function() {
-				alert("Listening for NDEF mime");
-                    console.log("Listening for NDEF mime tags with type text/pg.");
+                    // dump the raw json of the message
+                    // note: real code will need to decode
+                    // the payload from each record
+                    alert(JSON.stringify(ndefMessage));
+
+                    // assuming the first record in the message has 
+                    // a payload that can be converted to a string.
+                    alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));
                 },
-                failure
+                function () { // success callback
+                    alert("Waiting for NDEF tag");
+                },
+                function (error) { // error callback
+                    alert("Error adding NDEF listener " + JSON.stringify(error));
+                }
             );
+        } catch (ex) {
+            alert(ex.message);
         }
-	
+
+
         app.receivedEvent('deviceready');
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
