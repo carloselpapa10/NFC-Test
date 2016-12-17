@@ -1,15 +1,4 @@
-var user = [{ID: '4,-13,109,-6,-39,63,-128',
-    NAME: 'Carlos',
-    LASTNAME: 'Avendano',
-    PHOTO: 'path',
-    PHONE: '3003940576',
-    EMAIL: 'c.avendano10@gmail.com'},
-	{ID: '4,-98,-73,-118,-38,63,-128',
-    NAME: 'Kelwin',
-    LASTNAME: 'Payares',
-    PHOTO: 'path',
-    PHONE: '3288046004',
-    EMAIL: 'stevin_2209@hotmail.com'}];
+var user = null;
 
 var app = {
 
@@ -55,8 +44,13 @@ var app = {
 	onaddTagD: function(nfcEvent){
 		var tag = nfcEvent.tag;
 		if (tag.id) {
-			alert(tag.id);
-			alert(JSON.stringify(tag.id));
+			if(tag.id == user[0].ID){
+				alert("User: "+user[0].NAME);
+			}
+			
+			if(tag.id == user[1].ID){
+				alert("User: "+user[1].NAME);
+			}
 		}
 		
 		navigator.notification.vibrate(100); 
@@ -65,7 +59,20 @@ var app = {
 		alert("onaddNdef");
 	},
 	onSearchUser: function(){
-		alert(user[0].NAME+" - "+user[1].NAME);
+	
+		user = [{ID: '4,-13,109,-6,-39,63,-128',
+			NAME: 'Carlos',
+			LASTNAME: 'Avendano',
+			PHOTO: 'path',
+			PHONE: '3003940576',
+			EMAIL: 'c.avendano10@gmail.com'},
+			{ID: '4,-98,-73,-118,-38,63,-128',
+			NAME: 'Kelwin',
+			LASTNAME: 'Payares',
+			PHOTO: 'path',
+			PHONE: '3288046004',
+			EMAIL: 'stevin_2209@hotmail.com'}];
+		
 		/*window.cordovaHTTP.get(
 		  "https://platform.telerik.com",
 		  function(msg) {alert("OK: " + msg)},
