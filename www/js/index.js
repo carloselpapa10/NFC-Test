@@ -37,6 +37,7 @@ var app = {
         try {
             nfc.addTagDiscoveredListener(
                 function (nfcEvent){
+                    alert("addTagDiscoveredListener");
                    /* var o = nfcEvent;
                     var objetoAInspeccionar;
                     var resultado = [];
@@ -71,10 +72,10 @@ var app = {
                     alert("addMimeTypeListener : "+nfcEvent);
                 },
                 function(){
-                    alert("success callback");
+                    alert("addMimeTypeListener callback");
                 },
                 function(error){
-                    alert(error);
+                    alert("error addMimeTypeListener");
                 }
             );
             
@@ -95,7 +96,7 @@ var app = {
                     alert(nfc.bytesToString(ndefMessage[0].payload).substring(3));*/
                 },
                 function () { // success callback
-                    //alert("Waiting for NDEF tag");
+                    alert("Waiting for NDEF tag");
                 },
                 function (error) { // error callback
                     alert("Error adding NDEF listener " + JSON.stringify(error));
