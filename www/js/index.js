@@ -67,7 +67,6 @@ var app = {
 				EMAIL: 'stevin_2209@hotmail.com'}];
 		
 			if(ID == user[0].ID){
-				alert("User: "+user[0].NAME);
 				document.getElementById("userData").textContent=user[0].NAME;
 			}
 			
