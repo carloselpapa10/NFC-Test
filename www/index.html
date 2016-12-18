@@ -22,7 +22,13 @@
         <title>Hello World</title>
     </head>
     <body ng-controller="AppController">
-        <div class="app">
+		<div id="appi">
+			<!--<img src="img/{{image}}" class="thumbnail">
+			style="background:url(img/logo.png) no-repeat center top;"
+			-->
+		</div>
+        <div class="app" id="appi" style="background:url({{image}}) no-repeat center top; 
+									position:absolute;left:50%;top:50%;height:50px;width:225px;text-align:center;padding:180px 0px 0px 0px;margin:-115px 0px 0px -112px;">
             <h1>Card Reader</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
