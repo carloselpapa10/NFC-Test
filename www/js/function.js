@@ -1,60 +1,89 @@
-var app = angular.module("app", ['onsen'], ['ngCordova.plugins.nfc']);
+var app = angular.module("app", ['onsen','ngCordova.plugins.nfc']);
 
-app.controller("AppController", function($cordovaNfc, $cordovaNfcUtil){
-  //Because of the problem about the async-ness of the nfc plugin, we need to wait
-  //for it to be ready.
-  
-  $cordovaNfc.addNdefListener(
-			function() {
-				alert("a");
-				document.write("Found an NDEF formatted tag");
-			},
-			function() {
-				alert("b");
-				console.log("Success.");
-			},
-			function() {
-				alert("c");
-				console.log("Fail.");
-			}
-  );
-  
-  $cordovaNfc.addTagDiscoveredListener(
-			function() {
-				alert("a");
-				document.write("Found an NDEF formatted tag");
-			},
-			function() {
-				alert("b");
-				console.log("Success.");
-			},
-			function() {
-				alert("c");
-				console.log("Fail.");
-			}
-  );
-  
-   $cordovaNfc.then(function(nfcInstance){
+app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUtil){
 
-        //Use the plugins interface as you go, in a more "angular" way
-      nfcInstance.addNdefListener(function(event){
-            //Callback when ndef got triggered
+	$scope.user = {
+        ID: '',
+        NAME: '',
+		LASTNAME: '',
+        PHOTO: '',
+        TYPE: '',
+        PHONE: '',
+        EMAIL: ''
+    };	
+	
+	$scope.image = "img/logo.png";
+	$scope.userData = "";
+	
+	$scope.onSearchUser = function(ID){
+	
+		/*go to search student information
+			$http.get($scope.url.defecto+"kcrs_servidor/listarProductos.php?id=")
+            .success(
+            function(response){
+                alert(response);              
+            })
+            .error(
+            function(){
+                alert("No");
+            });			
+		*/
+		$scope.user = [{ID: '4,-13,109,-6,-39,63,-128',
+				NAME: 'Carlos',
+				LASTNAME: 'Avendano',
+				PHOTO: 'img/Carlos.jpg',
+				TYPE: 'Student',
+				PHONE: '3003940576',
+				EMAIL: 'c.avendano10@gmail.com'},
+				{ID: '4,-98,-73,-118,-38,63,-128',
+				NAME: 'Kelwin',
+				LASTNAME: 'Payares',
+				PHOTO: 'img/Kelwin.jpg',
+				TYPE: 'Professor',
+				PHONE: '3288046004',
+				EMAIL: 'stevin_2209@hotmail.com'}];
+				
+		if(ID == $scope.user[0].ID){
+			$scope.image = $scope.user[0].PHOTO;
+			$scope.userData = $scope.user[0].NAME+" ("+$scope.user[0].TYPE+")";
+		}else if(ID == $scope.user[1].ID){
+			$scope.image = $scope.user[1].PHOTO;
+			$scope.userData = $scope.user[1].NAME+" ("+$scope.user[1].TYPE+")";
+		}else{
+			$scope.image = "img/logo.png";
+			$scope.userData ="Unknown User";
+		}
+		myNavigator.resetToPage('index.html', { });
+	}
+	
+	$cordovaNfc.then(function(nfcInstance){
+      nfcInstance.addNdefListener(function(nfcEvent){
+			alert("123");
       })
       .then(
-        //Success callback
         function(event){
-			alert("bound success "+event);
             console.log("bound success");
         },
-        //Fail callback
         function(err){
-		alert("error "+err);
+			alert("error addNdefListener");
+            console.log("error");
+        });
+		
+		nfcInstance.addTagDiscoveredListener(function(nfcEvent){
+			navigator.notification.vibrate(300); 
+			$scope.onSearchUser(nfcEvent.tag.id);
+		})
+		.then(
+        function(event){
+            console.log("bound success");
+        },
+        function(err){
+			alert("error addTagDiscoveredListener");
             console.log("error");
         });
    });
 
-   $cordovaNfcUtil.then(function(nfcUtil){
-		alert("cordovaNfcUtil "+nfcUtil);
+   $cordovaNfcUtil.then(function(nfcUtil){		
         console.log( nfcUtil.bytesToString("some bytes") )
-   });    
+   });
 });
