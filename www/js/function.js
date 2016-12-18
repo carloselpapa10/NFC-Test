@@ -39,6 +39,7 @@ app.controller("AppController", function($cordovaNfc, $cordovaNfcUtil){
         //Use the plugins interface as you go, in a more "angular" way
       nfcInstance.addNdefListener(function(event){
             //Callback when ndef got triggered
+			alert("abcde");
       })
       .then(
         //Success callback
