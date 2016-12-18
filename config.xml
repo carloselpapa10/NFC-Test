@@ -11,6 +11,7 @@
     <param name="onload" value="true" />
     <gap:plugin name="phonegap-nfc" source="npm" />
     <gap:plugin name="cordova-plugin-vibration" source="npm"/>
+	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
 	<preference name="AndroidPersistentFileLocation" value="Compatibility" />"
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -19,6 +20,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+	<allow-navigation href="*"/>
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
