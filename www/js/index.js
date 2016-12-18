@@ -51,7 +51,8 @@ app = {
 		alert("onaddNdef");
 	},
 	onSearchUser: function(ID){
-			alert(cordovaHTTP);
+			var httpReq = new plugin.HttpRequest();
+			alert(httpReq);
 			/*cordovaHTTP.get("https://google.com/", {
 				id: 12,
 				message: "test"
