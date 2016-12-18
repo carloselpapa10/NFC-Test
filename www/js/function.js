@@ -12,7 +12,7 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
         EMAIL: ''
     };	
 	
-	$scope.image = "img/logo.png";
+	$scope.image = "https://s23.postimg.org/4sgx68ahn/Foto.jpg";
 	
 	$scope.onSearchUser = function(ID){
 	
