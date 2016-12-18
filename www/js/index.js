@@ -51,7 +51,7 @@ app = {
 		alert("onaddNdef");
 	},
 	onSearchUser: function(ID){
-			//alert(cordovaHTTP);
+			alert(window.cordovaHTTP);
 			/*cordovaHTTP.get("https://google.com/", {
 				id: 12,
 				message: "test"
