@@ -31,14 +31,22 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
 		$scope.user = [{ID: '4,-13,109,-6,-39,63,-128',
 				NAME: 'Carlos',
 				LASTNAME: 'Avendano',
+<<<<<<< HEAD
+				PHOTO: 'img/Carlos.jpg',
+=======
 				PHOTO: 'https://s23.postimg.org/4sgx68ahn/Foto.jpg',
+>>>>>>> origin/master
 				TYPE: 'Student',
 				PHONE: '3003940576',
 				EMAIL: 'c.avendano10@gmail.com'},
 				{ID: '4,-98,-73,-118,-38,63,-128',
 				NAME: 'Kelwin',
 				LASTNAME: 'Payares',
+<<<<<<< HEAD
+				PHOTO: 'img/Kelwin.jpg',
+=======
 				PHOTO: 'https://s23.postimg.org/ktznpvoiz/Foto_oficial.jpg',
+>>>>>>> origin/master
 				TYPE: 'Professor',
 				PHONE: '3288046004',
 				EMAIL: 'stevin_2209@hotmail.com'}];
