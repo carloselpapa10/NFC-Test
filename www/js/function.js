@@ -37,13 +37,12 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
 				{ID: '4,-98,-73,-118,-38,63,-128',
 				NAME: 'Kelwin',
 				LASTNAME: 'Payares',
-				PHOTO: 'https://s28.postimg.org/rokns2uct/Foto_oficial.jpg',
+				PHOTO: 'https://s23.postimg.org/ktznpvoiz/Foto_oficial.jpg',
 				TYPE: 'Professor',
 				PHONE: '3288046004',
 				EMAIL: 'stevin_2209@hotmail.com'}];
 				
 		if(ID == $scope.user[0].ID){
-		alert($scope.user[0].PHOTO);
 			$scope.image = $scope.user[0].PHOTO;
 			document.getElementById("userData").textContent=$scope.user[0].NAME+" ("+$scope.user[0].TYPE+")";			
 		}else if(ID == $scope.user[1].ID){
