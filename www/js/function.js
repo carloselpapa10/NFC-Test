@@ -43,12 +43,14 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
 				EMAIL: 'stevin_2209@hotmail.com'}];
 				
 		if(ID == $scope.user[0].ID){
+		alert($scope.user[0].PHOTO);
 			$scope.image = $scope.user[0].PHOTO;
 			document.getElementById("userData").textContent=$scope.user[0].NAME+" ("+$scope.user[0].TYPE+")";
 		}else if(ID == $scope.user[1].ID){
 			$scope.image = $scope.user[1].PHOTO;
 			document.getElementById("userData").textContent=$scope.user[1].NAME+" ("+$scope.user[1].TYPE+")";
 		}else{
+			$scope.image = "img/logo.png";
 			document.getElementById("userData").textContent="Unknown User";
 		}
 	}
