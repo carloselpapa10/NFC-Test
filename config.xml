@@ -10,9 +10,9 @@
     <content src="index.html" />
     <param name="onload" value="true" />
     <gap:plugin name="phonegap-nfc" source="npm" />
+    <gap:plugin name="cordova-plugin-vibration" source="npm"/>
+	<preference name="AndroidPersistentFileLocation" value="Compatibility" />"
     <access origin="*" />
-    
-	<uses-permission android:name="android.permission.VIBRATE"/>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
