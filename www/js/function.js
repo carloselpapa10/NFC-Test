@@ -56,16 +56,6 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
 		myNavigator.resetToPage('index.html', { });
 	}
 	
-	$scope.receivedEvent = function(id){
-		var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-	}
-	
 	$cordovaNfc.then(function(nfcInstance){
       nfcInstance.addNdefListener(function(nfcEvent){
 			alert("123");
@@ -93,8 +83,7 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
         });
    });
 
-   $cordovaNfcUtil.then(function(nfcUtil){
-		$scope.receivedEvent("deviceready");
+   $cordovaNfcUtil.then(function(nfcUtil){		
         console.log( nfcUtil.bytesToString("some bytes") )
-   }); 
+   });
 });
