@@ -51,17 +51,7 @@ app = {
 		alert("onaddNdef");
 	},
 	onSearchUser: function(ID){
-			var httpReq = new plugin.HttpRequest();
-			alert(httpReq);
-			/*cordovaHTTP.get("https://google.com/", {
-				id: 12,
-				message: "test"
-			}, { Authorization: "OAuth2: token" }, function(response) {
-				alert(response.status);
-			}, function(response) {
-				alert(response.error);
-			});*/
-
+			
 			user = [{ID: '4,-13,109,-6,-39,63,-128',
 				NAME: 'Carlos',
 				LASTNAME: 'Avendano',
