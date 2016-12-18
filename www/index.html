@@ -19,23 +19,35 @@
 		<script type="text/javascript" src="js/nfc.js"></script>
 		<script type="text/javascript" src="cordova.js"></script>
 		
+		<!-- CSS dependencies -->
+		<link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
+		<link rel="stylesheet" href="lib/onsen/css/onsen-css-components-sunshine-theme.css" />
+		<!-- <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-basic-theme.css" /> -->
+		<!-- CSP support mode (required for Windows Universal apps) -->
+		<link rel="stylesheet" href="lib/angular/angular-csp.css" />
+		
         <title>Hello World</title>
     </head>
     <body ng-controller="AppController">
-		<div id="appi">
-			<!--<img src="img/{{image}}" class="thumbnail">
-			style="background:url(img/logo.png) no-repeat center top;"
-			-->
-		</div>
-        <div class="app" id="appi" style="background:url({{image}}) no-repeat center top; 
-									position:absolute;left:50%;top:50%;height:50px;width:225px;text-align:center;padding:180px 0px 0px 0px;margin:-115px 0px 0px -112px;">
-            <h1>Card Reader</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+		
+		<ons-navigator var="myNavigator" id="index.html">
+			<ons-page>
+				<ons-toolbar>
+					<div class="center"><b>Univaq</b></div>
+				</ons-toolbar>
 				
-            </div>
-			<div id="userData"></div>
-        </div>
+				<div class="app" id="appi" style="background:url({{image}}) no-repeat center top; 
+									position:absolute;left:50%;top:50%;height:50px;width:225px;text-align:center;padding:180px 0px 0px 0px;margin:-115px 0px 0px -112px;">
+					<h3>Card Reader</h3>
+					<div id="deviceready" class="blink">
+						<p class="event listening">Connecting to Device</p>
+						<p class="event received">Device is Ready</p>						
+					</div>
+					<div id="userData"></div>
+				</div>
+			</ons-page>
+		</ons-navigator>
+		
+        
     </body>
 </html>
