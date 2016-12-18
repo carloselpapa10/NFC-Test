@@ -2,6 +2,14 @@ var app = angular.module("app", ['onsen','ngCordova.plugins.nfc']);
 
 app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUtil){
 	
+	$scope.failure = function(reason){
+		navigator.notification.alert(reason, function() {}, "There was a problem");
+	}
+	
+	$scope.addTagD = function(nfcEvent){
+		alert(nfcEvent.tag.id);
+	}
+	
 	$cordovaNfc.then(function(nfcInstance){
       nfcInstance.addNdefListener(function(nfcEvent){
 			alert("123");
@@ -10,21 +18,16 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
         function(event){
             console.log("bound success");
         },
-        function(err){
-            console.log("error");
-        });
+        $scope.failure);
 		
-		nfcInstance.addTagDiscoveredListener(function(nfcEvent){
-			alert(nfcEvent.tag.id);
-		})
+		nfcInstance.addTagDiscoveredListener(
+		$scope.addTagD
 		.then(
         function(event){
+		alert("good");
             console.log("bound success");
         },
-        function(err){
-			alert("error 2");
-            console.log("error");
-        });
+        $scope.failure);
    });
 
    $cordovaNfcUtil.then(function(nfcUtil){
