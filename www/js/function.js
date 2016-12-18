@@ -12,6 +12,23 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
         EMAIL: ''
     };
 	
+	$scope.url ={defecto: "http://caribbeancollege.co/online/"};
+	
+	$scope.test = function (){
+		
+		$http.get($scope.url.defecto+"kcrs_servidor/listarComentarios.php")
+            .success(
+            function(response){
+                alert(response);           
+            })
+            .error(
+            function(error){
+                alert("Revise su conexión a internet..."+error);
+            });
+	}
+	
+	$scope.test();
+	
 	$scope.onSearchUser = function(ID){
 	
 		/*go to search student information*/
