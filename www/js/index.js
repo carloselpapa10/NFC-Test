@@ -51,15 +51,15 @@ app = {
 		alert("onaddNdef");
 	},
 	onSearchUser: function(ID){
-			
-			cordovaHTTP.get("https://google.com/", {
+			alert(cordovaHTTP);
+			/*cordovaHTTP.get("https://google.com/", {
 				id: 12,
 				message: "test"
 			}, { Authorization: "OAuth2: token" }, function(response) {
 				alert(response.status);
 			}, function(response) {
 				alert(response.error);
-			});
+			});*/
 
 			user = [{ID: '4,-13,109,-6,-39,63,-128',
 				NAME: 'Carlos',
