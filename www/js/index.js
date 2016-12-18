@@ -11,12 +11,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-		window.cordovaHTTP.get(
-		  "https://platform.telerik.com",
-		  function(msg) {alert("OK: " + msg)},
-		  function(msg) {alert("ERROR: " + msg)}
-		);
-		
+				
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
