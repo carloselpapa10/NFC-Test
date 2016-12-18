@@ -13,6 +13,7 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
     };	
 	
 	$scope.image = "img/logo.png";
+	$scope.userData = "";
 	
 	$scope.onSearchUser = function(ID){
 	
@@ -44,13 +45,13 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
 				
 		if(ID == $scope.user[0].ID){
 			$scope.image = $scope.user[0].PHOTO;
-			document.getElementById("userData").textContent=$scope.user[0].NAME+" ("+$scope.user[0].TYPE+")";			
+			$scope.userData = $scope.user[0].NAME+" ("+$scope.user[0].TYPE+")";
 		}else if(ID == $scope.user[1].ID){
 			$scope.image = $scope.user[1].PHOTO;
-			document.getElementById("userData").textContent=$scope.user[1].NAME+" ("+$scope.user[1].TYPE+")";
+			$scope.userData = $scope.user[1].NAME+" ("+$scope.user[1].TYPE+")";
 		}else{
 			$scope.image = "img/logo.png";
-			document.getElementById("userData").textContent="Unknown User";
+			$scope.userData ="Unknown User";
 		}
 		myNavigator.resetToPage('index.html', { });
 	}
