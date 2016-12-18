@@ -1,89 +1,53 @@
-var app = angular.module("app", ['onsen','ngCordova.plugins.nfc']);
-
-app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUtil){
-
-	$scope.user = {
-        ID: '',
-        NAME: '',
-		LASTNAME: '',
-        PHOTO: '',
-        TYPE: '',
-        PHONE: '',
-        EMAIL: ''
-    };	
+<!DOCTYPE html>
+<html ng-app="app" ng-csp>
+    <head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
 	
-	$scope.image = "img/logo.png";
-	$scope.userData = "";
-	
-	$scope.onSearchUser = function(ID){
-	
-		/*go to search student information
-			$http.get($scope.url.defecto+"kcrs_servidor/listarProductos.php?id=")
-            .success(
-            function(response){
-                alert(response);              
-            })
-            .error(
-            function(){
-                alert("No");
-            });			
-		*/
-		$scope.user = [{ID: '4,-13,109,-6,-39,63,-128',
-				NAME: 'Carlos',
-				LASTNAME: 'Avendano',
-				PHOTO: 'https://s23.postimg.org/4sgx68ahn/Foto.jpg',
-				TYPE: 'Student',
-				PHONE: '3003940576',
-				EMAIL: 'c.avendano10@gmail.com'},
-				{ID: '4,-98,-73,-118,-38,63,-128',
-				NAME: 'Kelwin',
-				LASTNAME: 'Payares',
-				PHOTO: 'https://s23.postimg.org/ktznpvoiz/Foto_oficial.jpg',
-				TYPE: 'Professor',
-				PHONE: '3288046004',
-				EMAIL: 'stevin_2209@hotmail.com'}];
-				
-		if(ID == $scope.user[0].ID){
-			$scope.image = $scope.user[0].PHOTO;
-			$scope.userData = $scope.user[0].NAME+" ("+$scope.user[0].TYPE+")";
-		}else if(ID == $scope.user[1].ID){
-			$scope.image = $scope.user[1].PHOTO;
-			$scope.userData = $scope.user[1].NAME+" ("+$scope.user[1].TYPE+")";
-		}else{
-			$scope.image = "img/logo.png";
-			$scope.userData ="Unknown User";
-		}
-		myNavigator.resetToPage('index.html', { });
-	}
-	
-	$cordovaNfc.then(function(nfcInstance){
-      nfcInstance.addNdefListener(function(nfcEvent){
-			alert("123");
-      })
-      .then(
-        function(event){
-            console.log("bound success");
-        },
-        function(err){
-			alert("error addNdefListener");
-            console.log("error");
-        });
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">-->
+        
+		<link rel="stylesheet" type="text/css" href="css/index.css">
 		
-		nfcInstance.addTagDiscoveredListener(function(nfcEvent){
-			navigator.notification.vibrate(300); 
-			$scope.onSearchUser(nfcEvent.tag.id);
-		})
-		.then(
-        function(event){
-            console.log("bound success");
-        },
-        function(err){
-			alert("error addTagDiscoveredListener");
-            console.log("error");
-        });
-   });
-
-   $cordovaNfcUtil.then(function(nfcUtil){		
-        console.log( nfcUtil.bytesToString("some bytes") )
-   });
-});
+		<script src="lib/angular/angular.js"></script>
+		<script src="lib/onsen/js/onsenui.js"></script>
+		
+		<script type="text/javascript" src="js/function.js"></script>
+		<script type="text/javascript" src="js/nfc.js"></script>
+		<script type="text/javascript" src="cordova.js"></script>
+		
+		<!-- CSS dependencies -->
+		<link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
+		<link rel="stylesheet" href="lib/onsen/css/onsen-css-components-sunshine-theme.css" />
+		<!-- <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-basic-theme.css" /> -->
+		<!-- CSP support mode (required for Windows Universal apps) -->
+		<link rel="stylesheet" href="lib/angular/angular-csp.css" />
+		
+        <title>Hello World</title>
+    </head>
+    <body ng-controller="AppController">
+		
+		<ons-navigator var="myNavigator" id="index.html">
+			<ons-page>
+				<ons-toolbar>
+					<div class="center"><b>Univaq</b></div>
+				</ons-toolbar>
+				
+				<div class="app" id="appi" style="background:url({{image}}) no-repeat center top; 
+									position:absolute;left:50%;top:50%;height:50px;width:225px;text-align:center;padding:180px 0px 0px 0px;margin:-115px 0px 0px -112px;">
+					<h3>Card Reader</h3>
+					<div id="deviceready" class="blink">
+						<!--<p class="event listening">Connecting to Device</p>-->
+						<p class="event received">Device is Ready</p>	
+						<div id="userData">{{userData}}</div>
+					</div>	
+				</div>
+			</ons-page>
+		</ons-navigator>
+		
+        
+    </body>
+</html>
