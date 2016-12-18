@@ -31,14 +31,22 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
 				EMAIL: 'stevin_2209@hotmail.com'}];
 				
 		if(ID == $scope.user[0].ID){
-			alert($scope.user[0].NAME);
 			document.getElementById("userData").textContent=$scope.user[0].NAME+" ("+$scope.user[0].TYPE+")";
 		}else if(ID == $scope.user[1].ID){
-			alert($scope.user[0].NAME);
 			document.getElementById("userData").textContent=$scope.user[1].NAME+" ("+$scope.user[1].TYPE+")";
 		}else{
 			document.getElementById("userData").textContent="Unknown User";
 		}
+	}
+	
+	$scope.receivedEvent = function(id){
+		var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
 	}
 	
 	$cordovaNfc.then(function(nfcInstance){
@@ -55,7 +63,7 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
         });
 		
 		nfcInstance.addTagDiscoveredListener(function(nfcEvent){
-			navigator.notification.vibrate(200); 
+			navigator.notification.vibrate(300); 
 			$scope.onSearchUser(nfcEvent.tag.id);
 		})
 		.then(
@@ -69,7 +77,7 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
    });
 
    $cordovaNfcUtil.then(function(nfcUtil){
+		$scope.receivedEvent("deviceready");
         console.log( nfcUtil.bytesToString("some bytes") )
    }); 
-	   
 });
