@@ -13,6 +13,9 @@
     <gap:plugin name="cordova-plugin-vibration" source="npm"/>
 	<preference name="AndroidPersistentFileLocation" value="Compatibility" />"
     <access origin="*" />
+	<gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
