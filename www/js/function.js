@@ -2,60 +2,27 @@ var app = angular.module("app", ['onsen','ngCordova.plugins.nfc']);
 
 app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUtil){
 
-	$scope.user = {
-        ID: '',
-        NAME: '',
-		LASTNAME: '',
-        PHOTO: '',
-        TYPE: '',
-        PHONE: '',
-        EMAIL: ''
-    };	
+	$scope.user = {photo:"img/logo.png"};	
+	//$scope.image = "img/logo.png";
 	
-	$scope.image = "img/logo.png";
-	$scope.userData = "";
+	$scope.viewTimetable = function(myNavigator,user){	
+		myNavigator.pushPage('timetable.html', { });		
+	}
 	
-	$scope.onSearchUser = function(ID){
+	$scope.onSearchUser = function(idCard){
 	
-		/*go to search student information
-			$http.get($scope.url.defecto+"kcrs_servidor/listarProductos.php?id=")
+		/*go to search student information*/
+			url = "https://139.165.56.219:8080/api/v1/student?idCard="+idCard;
+			$http.get(url)
             .success(
             function(response){
-                alert(response);              
+                $scope.user = response;  
+				document.getElementById("btnId").style.visibility = "visible";
             })
             .error(
-            function(){
-                alert("No");
-            });			
-		*/
-		$scope.user = [{ID: '4,-13,109,-6,-39,63,-128',
-				NAME: 'Carlos',
-				LASTNAME: 'Avendano',
-				PHOTO: 'img/Carlos.jpg',
-				PHOTO: 'https://s23.postimg.org/4sgx68ahn/Foto.jpg',
-				TYPE: 'Student',
-				PHONE: '3003940576',
-				EMAIL: 'c.avendano10@gmail.com'},
-				{ID: '4,-98,-73,-118,-38,63,-128',
-				NAME: 'Kelwin',
-				LASTNAME: 'Payares',
-				PHOTO: 'img/Kelwin.jpg',
-				PHOTO: 'https://s23.postimg.org/ktznpvoiz/Foto_oficial.jpg',
-				TYPE: 'Professor',
-				PHONE: '3288046004',
-				EMAIL: 'stevin_2209@hotmail.com'}];
-				
-		if(ID == $scope.user[0].ID){
-			$scope.image = $scope.user[0].PHOTO;
-			$scope.userData = $scope.user[0].NAME+" ("+$scope.user[0].TYPE+")";
-		}else if(ID == $scope.user[1].ID){
-			$scope.image = $scope.user[1].PHOTO;
-			$scope.userData = $scope.user[1].NAME+" ("+$scope.user[1].TYPE+")";
-		}else{
-			$scope.image = "img/logo.png";
-			$scope.userData ="Unknown User";
-		}
-		myNavigator.resetToPage('index.html', { });
+            function(error){
+				document.getElementById("btnId").style.visibility = "hidden";					
+            });		
 	}
 	
 	$cordovaNfc.then(function(nfcInstance){
