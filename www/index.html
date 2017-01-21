@@ -10,13 +10,11 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">-->
         
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-		
+		<link rel="stylesheet" type="text/css" href="css/index.css">		
 		<script src="lib/angular/angular.js"></script>
-		<script src="lib/onsen/js/onsenui.js"></script>
-		
+		<script src="lib/onsen/js/onsenui.js"></script>		
 		<script type="text/javascript" src="js/function.js"></script>
-		<script type="text/javascript" src="js/nfc.js"></script>
+		<script type="text/javascript" src="js/nfc.js"></script>				
 		<script type="text/javascript" src="cordova.js"></script>
 		
 		<!-- CSS dependencies -->
@@ -33,21 +31,167 @@
 		<ons-navigator var="myNavigator" id="index.html">
 			<ons-page>
 				<ons-toolbar>
+					<!-- ng-init="onSearchUser('4,-98,-73,-118,-38,63,-128')" -->
 					<div class="center"><b>Univaq</b></div>
 				</ons-toolbar>
 				
-				<div class="app" id="appi" style="background:url({{image}}) no-repeat center top; 
+				<div class="app" id="appi" style="background:url({{user.photo}}) no-repeat center top; 
 									position:absolute;left:50%;top:50%;height:50px;width:225px;text-align:center;padding:180px 0px 0px 0px;margin:-115px 0px 0px -112px;">
 					<h3>Card Reader</h3>
 					<div id="deviceready" class="blink">
-						<!--<p class="event listening">Connecting to Device</p>-->
-						<p class="event received">Device is Ready</p>	
-						<div id="userData">{{userData}}</div>
+						<p class="event received" id="devReady">Device is Ready</p>	
 					</div>	
+					<div id="userData">{{user.firstName}} {{user.lastName}}</div>
+					<ons-button modifier="light" ng-click="viewTimetable(myNavigator,user)" id="btnId" style="visibility: hidden;"><b>View Timetable</b></ons-button>
 				</div>
 			</ons-page>
 		</ons-navigator>
 		
+		<ons-template id="timetable.html">
+			<ons-toolbar>
+				<div class="center"><b>Timetable</b></div>
+				<div class="left">
+					<ons-back-button >Back</ons-back-button>
+				</div>
+			</ons-toolbar>
+			<ons-list modifier="inset" style="margin-top: 10px">
+				<!--<ons-list-item>
+					<ons-col width="60px" class="profile-image-wrapper">
+					  <img src="{{user.photo}}" class="profile-image">
+					</ons-col>
+				</ons-list-item>-->
+				<ons-row class="profile-wrapper">
+					<ons-col width="60px" class="profile-image-wrapper">
+					  <img src="{{user.photo}}" class="profile-image">
+					</ons-col>
+
+					<ons-col>
+					  <div class="profile-name">{{user.firstName}} {{user.lastName}}</div>
+					  <div class="profile-email">{{user.email}}</div>
+					</ons-col>
+
+				</ons-row>
+				<ons-list-item>
+					<b>Identification:</b> {{user.idStudent}}
+				</ons-list-item>
+				<ons-list-item>
+					<b>Type:</b> {{user.type}} 
+				</ons-list-item>
+				<ons-list-item>
+					<b>Phone:</b> {{user.phone}} 
+				</ons-list-item>				
+			</ons-list>
+			
+			<ons-list-item>
+					<b>Monday</b>
+			</ons-list-item>
+			
+			<ons-list modifier="inset" style="margin-top: 10px">
+				
+				<ons-list-item ng-repeat="sDay in user.schedule.monday">
+						<ons-col>
+						  <div class="name">
+							  {{sDay.course}}
+						  </div>              
+						  <div class="location">
+							{{sDay.classroom}}
+						  </div>
+						  <div class="desc">
+							  {{sDay.from}} - {{sDay.to}}
+						  </div>
+						</ons-col>
+					</ons-list-item>
+				
+			</ons-list>
+			
+			<ons-list-item>
+					<b>Tuesday</b>
+			</ons-list-item>
+			
+			<ons-list modifier="inset" style="margin-top: 10px">
+				
+				<ons-list-item ng-repeat="sDay in user.schedule.tuesday">
+						<ons-col>
+						  <div class="name">
+							  {{sDay.course}}
+						  </div>              
+						  <div class="location">
+							{{sDay.classroom}}
+						  </div>
+						  <div class="desc">
+							  {{sDay.from}} - {{sDay.to}}
+						  </div>
+						</ons-col>
+					</ons-list-item>
+				
+			</ons-list>
+			
+			<ons-list-item>
+					<b>Wednesday</b>
+			</ons-list-item>
+			
+			<ons-list modifier="inset" style="margin-top: 10px">
+				
+				<ons-list-item ng-repeat="sDay in user.schedule.wednesday">
+						<ons-col>
+						  <div class="name">
+							  {{sDay.course}}
+						  </div>              
+						  <div class="location">
+							{{sDay.classroom}}
+						  </div>
+						  <div class="desc">
+							  {{sDay.from}} - {{sDay.to}}
+						  </div>
+						</ons-col>
+					</ons-list-item>
+				
+			</ons-list>
+			
+			<ons-list-item>
+					<b>Thursday</b>
+			</ons-list-item>
+			
+			<ons-list modifier="inset" style="margin-top: 10px">
+				
+				<ons-list-item ng-repeat="sDay in user.schedule.thursday">
+						<ons-col>
+						  <div class="name">
+							  {{sDay.course}}
+						  </div>              
+						  <div class="location">
+							{{sDay.classroom}}
+						  </div>
+						  <div class="desc">
+							  {{sDay.from}} - {{sDay.to}}
+						  </div>
+						</ons-col>
+					</ons-list-item>
+				
+			</ons-list>
+			
+			<ons-list-item>
+					<b>Friday</b>
+			</ons-list-item>
+			
+			<ons-list modifier="inset" style="margin-top: 10px">
+				
+				<ons-list-item ng-repeat="sDay in user.schedule.friday">
+						<ons-col>
+						  <div class="name">
+							  {{sDay.course}}
+						  </div>              
+						  <div class="location">
+							{{sDay.classroom}}
+						  </div>
+						  <div class="desc">
+							  {{sDay.from}} - {{sDay.to}}
+						  </div>
+						</ons-col>
+					</ons-list-item>
+				
+			</ons-list>
+		</ons-template>
         
     </body>
 </html>
