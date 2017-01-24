@@ -62,7 +62,7 @@ app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUt
         });
 		
 		nfcInstance.addTagDiscoveredListener(function(nfcEvent){
-			navigator.notification.vibrate(300); 
+			//navigator.notification.vibrate(300); 
 			$scope.onSearchUser(nfcEvent.tag.id);
 		})
 		.then(
