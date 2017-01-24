@@ -3,10 +3,33 @@ var app = angular.module("app", ['onsen','ngCordova.plugins.nfc']);
 app.controller("AppController", function($scope,$http,$cordovaNfc, $cordovaNfcUtil){
 
 	$scope.user = {photo:"img/logo.png"};	
-	//$scope.image = "img/logo.png";
+	$scope.news = null;
 	
-	$scope.viewTimetable = function(myNavigator,user){	
-		myNavigator.pushPage('timetable.html', { });		
+	$scope.viewKiosk = function(menu){
+		$scope.user = {photo:"img/logo.png"};
+		menu.setMainPage('index.html', {closeMenu: true});		
+	}
+	
+	$scope.viewNews = function(menu){	
+		$scope.onSearchNews();
+		menu.setMainPage('news.html', {closeMenu: true});	
+	}
+	
+	$scope.viewTimetable = function(menu,user){	
+		menu.setMainPage('timetable.html', { });		
+	}
+	
+	$scope.onSearchNews = function(){
+		url = "https://139.165.56.219:8080/api/v1/news";
+		$http.get(url)
+        .success(
+        function(response){
+			$scope.news = response;
+        })
+        .error(
+        function(error){
+			
+        });	
 	}
 	
 	$scope.onSearchUser = function(idCard){
